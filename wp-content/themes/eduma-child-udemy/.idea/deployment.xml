@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="eduma-udemy-server">
+    <serverData>
+      <paths name="eduma-udemy-server">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-content/themes/eduma-child-udemy" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

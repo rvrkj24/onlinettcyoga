@@ -1,0 +1,56 @@
+sitemap.xml
+sitemap.xml.gz
+*.log
+wp-config.php
+wp-content/advanced-cache.php
+wp-content/backup-db/
+wp-content/backups/
+wp-content/updraft/
+wp-content/blogs.dir/
+wp-content/cache/*
+wp-content/upgrade/*
+wp-content/uploads
+wp-content/wp-cache-config.php
+wp-content/wp-rocket-config/
+wp-content/w3tc-config/
+wp-content/wp-performance-score-booster/
+
+.htaccess
+wp-snapshots
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.bz2
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases #
+######################
+*.sql
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+._*
+
+# Vim generated files #
+######################
+*.un~
+
+# SASS #
+##########
+.sass-cache
+
+#localdev#
+local-adminer-DxD3hqQav.php
+local-phpinfo.php
+wp-content/themes/dt-the7-child/prepros-6.config
