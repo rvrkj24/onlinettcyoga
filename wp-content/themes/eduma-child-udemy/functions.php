@@ -157,7 +157,7 @@ if( !function_exists('thim_udemy_course_feature')){
 				<?php /* endif; */ ?>
 				<?php if ( ! empty( $lp_duration ) ): ?>
 					<li class="durationonsite-feature">
-						<i class="fa fa-clock-o"></i>						
+						<i class="fa fa-clock-o"></i>
 						<span class="label"><?php esc_html_e( 'Onsite:', 'eduma' ); ?></span>
 						<span class="value"><?php echo esc_html( $lp_duration ); ?></span>
 					</li>
@@ -168,7 +168,7 @@ if( !function_exists('thim_udemy_course_feature')){
 						<span class="value"><?php echo esc_html( $course_language ); ?></span>
 						<span class="label"><?php esc_html_e( 'Language', 'eduma' ); ?></span>
 					</li>
-				<?php endif; ?>				
+				<?php endif; ?>
 				<li class="students-feature">
 					<i class="fa fa-users"></i>
 					<?php $user_count = $course->get_users_enrolled() ? $course->get_users_enrolled() : 0; ?>
@@ -669,10 +669,100 @@ if ( ! function_exists( 'thim_duration_time_calculator' ) ) {
 		}
 	}
 }
+/* ------- Yoga course filter ----------s */
+function yogacoursefilter_shortcode() {
+
+			$course_sort_query = new WP_Query(array(
+				'post_type' => 'lp_course',
+				'posts_per_page' => -1,
+				'order' => 'ASC',
+				'meta_key' => 'course_date',
+				'orderby' => 'meta_value_num',
+				//'capability_type'=> 'post'
+			));
+
+			if ($course_sort_query->have_posts() ) { ?>
+
+		<?php
+			while ( $course_sort_query->have_posts() ) {
+				$course_sort_query->the_post();
+		?>
+
+
+    <div class="lpr_course course-grid-4">
+				<div class="course-item">
+						<div class="course-thumbnail">
+							<a href="<?php echo get_permalink(); ?>">
+								<img src="<?php echo get_the_post_thumbnail_url( $post_id, 'thumbnail' ); ?>"
+									alt="<?php the_title(); ?>" title="<?php the_title(); ?>" width="255" height="198">
+							</a>
+								<!-- <a class="course-readmore" href="<?php echo get_permalink(); ?>">Read More</a> -->
+						</div>
+
+					<div class="thim-course-content">
+							<div class="course-author" itemscope="" itemtype="http://schema.org/Person">
+								<img src="" title="<?php the_title(); ?>">	<div class="author-contain">
+									<div class="value" itemprop="name">
+										<a href="<?php echo get_permalink(); ?>"><?php get_the_author_meta('display_name') ?> </a>
+									</div>
+							</div>
+					</div>
+
+												<h2 class="course-title">
+													<a href="<?php echo get_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
+												</h2>
+
+											<div class="course-meta">
+												<div class="course-author" itemscope="" itemtype="http://schema.org/Person">
+													<img src="" alt="<?php echo get_the_author_meta('display_name'); ?>" title="<?php echo get_the_author_meta('display_name');?>">	<div class="author-contain">
+														<div class="value" itemprop="name">
+															<a href=""><?php get_the_author_meta('display_name'); ?> </a>
+														</div>
+												</div>
+											</div>
+
+										<div class="course-students">
+												<label>Students</label>
+													<div class="value"><i class="fa fa-group"></i>
+														13
+													</div>
+												<span>students</span>
+										</div>
+
+								<div class="course-price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+										<div class="value " itemprop="price">
+															$700.00
+											</div>
+												<meta itemprop="priceCurrency" content="USD">
+											</div>
+
+										</div>
+
+										<div class="course-readmore">
+											<a href="<?php echo get_permalink(); ?>">Read More</a>
+										</div>
+
+									</div>
+
+					</div>
+
+				</div>
+
+
+
+
+			<?php }
+			wp_reset_postdata();
+		}
+}
+
+add_shortcode('yogacourse', 'yogacoursefilter_shortcode');
+
+
 /*
 
 function cusstom_meta_box_for_courses() {
-	add_meta_box('courses_field','Course Details','display_course_details','lp_course','normal','high'); 
+	add_meta_box('courses_field','Course Details','display_course_details','lp_course','normal','high');
 }
 add_action( 'add_meta_boxes', 'cusstom_meta_box_for_courses' );
 
@@ -711,4 +801,6 @@ function save_course_details(){
 			update_post_meta($post->ID,$key,$value);
 		}
 	}
-} */
+}
+*/
+?>
